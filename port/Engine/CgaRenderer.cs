@@ -1,0 +1,103 @@
+using System;
+using System.Runtime.InteropServices;
+using SkiaSharp;
+
+namespace GoldenFluteIV.Engine;
+
+/// <summary>
+/// Owns the 320×200 CGA framebuffer as a pinned SKBitmap (BGRA8888).
+/// All drawing goes through this class; the canvas reads Bitmap for display.
+/// CGA Palette 1, high-intensity: black / cyan / magenta / white.
+/// </summary>
+public sealed class CgaRenderer : IDisposable
+{
+    public const int Width  = 320;
+    public const int Height = 200;
+
+    // Palette in BGRA8888 uint order (little-endian: B=byte0, G=byte1, R=byte2, A=byte3)
+    // uint value = (A << 24) | (R << 16) | (G << 8) | B
+    public static readonly uint[] PaletteArgb =
+    [
+        0xFF000000,  // 0 = black   (R=  0, G=  0, B=  0)
+        0xFF55FFFF,  // 1 = cyan    (R= 85, G=255, B=255)
+        0xFFFF55FF,  // 2 = magenta (R=255, G= 85, B=255)
+        0xFFFFFFFF,  // 3 = white   (R=255, G=255, B=255)
+    ];
+
+    // Human-readable SKColors for Skia drawing calls (e.g. text)
+    public static readonly SKColor[] Palette =
+    [
+        new(  0,   0,   0),
+        new( 85, 255, 255),
+        new(255,  85, 255),
+        new(255, 255, 255),
+    ];
+
+    private readonly uint[]   _pixels;
+    private readonly GCHandle _handle;
+    public  readonly SKBitmap Bitmap;
+
+    public CgaRenderer()
+    {
+        _pixels = new uint[Width * Height];
+        _handle = GCHandle.Alloc(_pixels, GCHandleType.Pinned);
+
+        var info = new SKImageInfo(Width, Height, SKColorType.Bgra8888, SKAlphaType.Opaque);
+        Bitmap = new SKBitmap();
+        Bitmap.InstallPixels(info, _handle.AddrOfPinnedObject(), info.RowBytes);
+    }
+
+    /// <summary>
+    /// Raw pointer to the pinned pixel buffer (BGRA8888, 320×200 × 4 bytes).
+    /// Used by GameCanvas to blit into a WriteableBitmap without extra allocation.
+    /// </summary>
+    public IntPtr PinnedPtr => _handle.AddrOfPinnedObject();
+
+    /// <summary>Fill the entire framebuffer with palette index <paramref name="colorIndex"/>.</summary>
+    public void Clear(int colorIndex = 0)
+    {
+        uint c = PaletteArgb[colorIndex & 3];
+        _pixels.AsSpan().Fill(c);
+    }
+
+    /// <summary>Set a single pixel. No bounds checking.</summary>
+    public void SetPixel(int x, int y, int colorIndex) =>
+        _pixels[y * Width + x] = PaletteArgb[colorIndex & 3];
+
+    /// <summary>
+    /// Blit a decoded screen image onto the framebuffer.
+    /// <paramref name="indices"/> must be Width*Height palette indices, row-major.
+    /// </summary>
+    public void BlitIndexed(byte[] indices)
+    {
+        for (int i = 0; i < indices.Length; i++)
+            _pixels[i] = PaletteArgb[indices[i] & 3];
+    }
+
+    /// <summary>
+    /// Copy a decoded tile (24×20 pixels, palette indices) onto the framebuffer at (x,y).
+    /// Clips to screen boundaries.
+    /// </summary>
+    public void BlitTile(byte[] tilePixels, int x, int y)
+    {
+        const int TW = TileSet.TileWidth;
+        const int TH = TileSet.TileHeight;
+        for (int row = 0; row < TH; row++)
+        {
+            int dy = y + row;
+            if (dy < 0 || dy >= Height) continue;
+            for (int col = 0; col < TW; col++)
+            {
+                int dx = x + col;
+                if (dx < 0 || dx >= Width) continue;
+                _pixels[dy * Width + dx] = PaletteArgb[tilePixels[row * TW + col] & 3];
+            }
+        }
+    }
+
+    public void Dispose()
+    {
+        Bitmap.Dispose();
+        if (_handle.IsAllocated) _handle.Free();
+    }
+}

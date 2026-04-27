@@ -1,0 +1,13 @@
+File: GF4GAME.EXE  (88,480 bytes)
+
+MZ header:
+  total image size:   88,480 bytes
+  header size:        10224 bytes (639 paragraphs)
+  load image size:    78,256 bytes
+  num relocations:    2548
+  reloc table offset: 0x001C
+  initial CS:IP:      0000:A657
+  initial SS:SP:      2226:FFF0
+  min/max alloc:      7946 / 0x270a paragraphs
+  overlay:            0
+  entry file offset:  0xCE47

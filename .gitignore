@@ -1,0 +1,31 @@
+# Portable tooling — re-downloaded on demand, not part of the repo
+/tools/ghidra/
+/tools/jdk/
+/tools/dosbox-x/
+/tools/ffmpeg/
+/tools/downloads/
+/tools/ghidra-project/
+/tools/
+
+# Original game assets. Can't commit them, has copyrighted stuff (hey, I was 12)
+/1994/
+
+# Generated asset dumps and video frames (regenerable from /1994 + source MP4)
+/docs/asset-dumps/
+/docs/video-frames/
+
+# .NET build artifacts
+**/bin/
+**/obj/
+*.user
+*.suo
+.vs/
+
+# Avalonia / Rider / VS scratch
+.idea/
+*.DotSettings.user
+
+# OS noise
+Thumbs.db
+.DS_Store
+desktop.ini

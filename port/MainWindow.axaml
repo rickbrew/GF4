@@ -1,0 +1,23 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:GoldenFluteIV"
+        x:Class="GoldenFluteIV.MainWindow"
+        Title="The Golden Flute IV"
+        Width="1280" Height="800"
+        MinWidth="320" MinHeight="200"
+        CanResize="True"
+        Background="Black"
+        WindowStartupLocation="CenterScreen">
+
+    <!--
+        GameCanvas measures itself at 1280×800 (320×200 × 4 scale).
+        The outer ViewBox scales it to fill whatever the window size is,
+        preserving the 16:10 aspect ratio (320:200 = 8:5).
+        Integer-scale look is maintained because GameCanvas uses nearest-neighbour
+        blitting and the ViewBox applies a uniform scale transform on top.
+    -->
+    <Viewbox Stretch="Uniform">
+        <local:GameCanvas x:Name="Canvas" />
+    </Viewbox>
+
+</Window>

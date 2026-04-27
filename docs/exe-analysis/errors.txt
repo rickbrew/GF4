@@ -1,0 +1,13 @@
+0000E2EE  File not found
+0000E2FD  Path not found
+0000E31F  Invalid file handle
+0000E333  Invalid file access code
+0000E34C  Invalid drive number Cannot remover current directory
+0000E39E  Disk write error
+0000E400  Invalid numeric format
+0000E45C  CRC error in data"Bad drive request structure length
+0000E491  Disk seek error
+0000E4B4  Sector not found
+0000E930  3BGI Error: Graphics not initialized (use InitGraph) BGI Error:  Not in graphics modeU
+00013F51  SPEED.DAT)SPEED.DAT not found, running SETSPEED.EXE
+00014377  Runtime error 

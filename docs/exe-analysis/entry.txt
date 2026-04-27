@@ -1,0 +1,6 @@
+# external entry points:
+  1000:a657  entry
+
+# image base: 0000:0000
+# initial CS:IP from Ghidra metadata:
+# (see memmap.txt for segment layout)

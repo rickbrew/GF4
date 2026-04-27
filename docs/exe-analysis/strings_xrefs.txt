@@ -1,0 +1,42 @@
+1000:0001  (12)  MONSTERS.DAT
+1000:10dc  (12)  SAVEGAME.DAT
+1000:10fc  (32)  Which one do you want?	Load Game
+1000:16d9  (74)  Gun Shot\rRumble Rumble)Press any key or mouse button to continue	STATS.VOC
+1000:22a6  (19)  1. Healing Potion (
+1000:22d6  (21)  3. None\rEnter Choice:
+1000:25aa  (8)  TEMP.PIC
+1000:25df  (12)  LITENING.PIC
+1000:34cf  (29)  4. Drink potion\rEnter choice:
+1000:3719  (34)  No weapon available!\rEnter choice:
+1000:39d9  (8)  MACE.PIC
+1000:3c88  (30)  6. Rumble Rumble\rEnter choice:
+1000:4342  (11)  SPIDERS.CMF
+1000:5bd2  (12)  MUSICBOX.CMF
+1000:5c36  (8)  HELP.PIC
+1000:5c9c  (11)  JUPITER.CMF
+1000:5f55  (43)  You cannot pass through them.\rPress any key
+1000:67f8  (12)  ZEPPELIN.CMF
+1000:7173  (28)  IT.CMF\nINTRO1.PIC\nINTRO2.PIC
+1000:729b  (25)  Press any key to continue
+1000:913d  (5)  FAIRY
+1000:a3c6  (10)  	SPEED.DAT
+1000:a5d0  (23)  CLR-TEXT.EXE\nSIMCGA.COM
+1c14:2e66  (9)  .BOLD.CHR
+1c14:2e70  (8)  TRIP.CHR
+1c14:2e79  (8)  SANS.CHR
+1c14:2e82  (8)  LITT.CHR
+1c14:2e8b  (8)  SIMP.CHR
+1c14:2e94  (8)  TSCR.CHR
+1c14:2e9d  (8)  SCRI.CHR
+1c14:2ea6  (8)  EURO.CHR
+1c14:2eaf  (8)  LCOM.CHR
+1c14:2eb8  (8)  GOTH.CHR
+20e5:0141  (12)  STOP-CMF.COM
+2176:0035  (12)  SETSPEED.EXE
+219e:01a7  (14)  Runtime error 
+22f5:0001  (6)  Sunday
+22f5:000b  (6)  Monday
+22f5:0015  (7)  Tuesday
+22f5:0029  (8)  Thursday
+22f5:0033  (6)  Friday
+22f5:003d  (8)  Saturday

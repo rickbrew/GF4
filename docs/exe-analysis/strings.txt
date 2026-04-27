@@ -1,0 +1,405 @@
+000027F1  MONSTERS.DAT
+000028A1  Credits: 
+000028AB  Sound Blaster CMF Files:B  Jill of the Jungle, Sound Blaster (bundled with), and Multimedia
+00002907    Maker/Sound Blaster API (SAY-SB, PLAY-CMF, STOP-CMF):
+0000293F    Multimedia Maker5Programming, Visual Effects, Design, Producer, etc...+  Rick Brewster (over 5,000 lines of code!)
+000029B4  Dedicated to+  Ryan Brewster who enjoyed the first three!Sources for HELP! in programming:5  Mouse routines: some weird mouse DOC file at church=  Cool fades: inspired by some offbeat pre-1989 Accolade game'  Sound Blaster: my paycheck bought it!;  Rad digitized sounds: Jill of the Jungle (crash!), Prince>    of Persia (scream), myself, my brother (Stuart), Multimeda'    Maker, Sound Blaster (bundled with)
+00002B4E  Turbo Pascal 4.0 acquired from0  Borland, of course!  All joking aside, my dad.L    HAVE FUN PLAYING! (don't tell anyone of this! you press Alt+2+5+5 numpadL Creative Labs Rules!  Media Vision sucks!  Creative Labs rules! Ad Lib sux!U
+00002F94  TEMP.PIC
+00002F9D  SAVEGAME.DAT
+00002FBD  Which one do you want?
+00002FD4  Save Game
+00002FE8  Saving...
+00002FF6  .SAVU
+00003792  0uP1
+000038CC  SAVEGAME.DAT
+000038EC  Which one do you want?
+00003903  Load Game
+00003915  Loading...
+00003924  .SAVU
+00003C29  0uP1
+00003CF4  Fighter
+00003CFC  Magic User
+00003D07  Thief
+00003D0D   Statistics Sheet
+00003D1F       Health:           
+00003D37       Attack Level:     
+00003D4F       Attack Die:       
+00003D67       Defend Level:     
+00003D7F       Defend Die:       
+00003D97       Magic Points:     
+00003DAF       Magic Experience: 
+00003DC7       Strength:         
+00003DDF       Dexterity:        
+00003DF7       Inventory
+00003E06   Gold Coins
+00003E12  A Sword
+00003E1A  A Mace (a.k.a., Club)
+00003E30  A Knife
+00003E38  Plate Armour
+00003E45  Chainmail Armour
+00003E56  Leather Armour
+00003E65   Healing Potion(s)
+00003E78   Magic Potion(s)
+00003E89       Spells
+00003E95  Lightning Bolt
+00003EA4  Fiery Mist
+00003EAF  Electric Fury
+00003EBD  Dizzy Spell
+00003EC9  Gun Shot
+00003ED2  Rumble Rumble)Press any key or mouse button to continue
+00003F0A  STATS.VOC
+000048AA  RIP.PIC
+000048B2  STARWARS.CMF
+000048BF  GAMEOVER.VOCU
+00004920  STARFM.CMF
+0000492B  ENDING1.PIC
+00004937  ENDING2.PIC
+00004943  ENDING3.PIC
+0000494F  ENDING4.PIC
+0000495B  ENDING5.PIC
+00004967  ENDING6.PIC
+00004973  ENDING7.PIC
+0000497F  LAUGH.VOC
+00004989  ENDING8.PICU
+00004A7C  Please enter your choice:
+00004A96  1. Healing Potion (
+00004AB4  2. Magic Potion (
+00004AC6  3. None
+00004ACE  Enter Choice:
+00004AE4  BUZZER.VOC
+00004AEF  AH.VOC
+00004AFE  1.PICU
+00004D9A  TEMP.PIC
+00004DAB  Not enough magic points!
+00004DC4  SCOTTY.VOC
+00004DCF  LITENING.PIC
+00004DE4  FIERY.PIC
+00004DEE  FIRE.VOC
+00004DF7  ELECTRIC.PIC
+00004E04  SFX5.VOC
+00004E0D  SFX9.VOCU
+00005ADE  Your Health: 
+00005AEC  's Health: 
+00005AF8  Magic Points: U
+00005C80  Please enter a choice:
+00005C97  1. Use weapon
+00005CA5  2. Retreat!
+00005CB1  3. Cast Spell
+00005CBF  4. Drink potion
+00005CCF  Enter choice:
+00005CE5  1.PICU
+00005ED7  Please choose a weapon:
+00005EEF  1. Knife
+00005EF8  2. Sword
+00005F01  3. Mace
+00005F09  No weapon available!
+00005F1E  Enter choice:
+00005F34  1.PICU
+000061AC  TEMP.PIC
+000061B5  KNIFE.PIC
+000061BF  SWORD.PIC
+000061C9  MACE.PIC
+000061DA  HIT.PIC
+000061E2  UH!.VOC
+000061EA  Miss
+000061F7  BUZZER.VOCU
+00006415  Please enter a choice:
+0000642C  1. Lightning Bolt
+0000643E  2. Fiery Mist
+0000644C  3. Electric Fury
+0000645D  4. Dizzy Spell
+0000646C  5. Gun Shot
+00006478  6. Rumble Rumble
+00006489  Enter choice:
+0000649F  1.PICU
+0000665E  5<2u
+00006669  *<3u
+000067A5  TEMP.PIC
+000067AE  2.PIC
+000067C4  UH!.VOC
+000067CC  Miss
+0000696C  1.PIC
+00006B1B  SCREAM.VOC
+00006B26  OMINOUS.CMF
+00006B32  SPIDERS.CMF
+00006B46  Goblin
+00006B4D  Gargoyle
+00006B56  Minotaur
+00006B63  Giant
+00006B69  Dragon
+00006B70  Troll
+00006B76  Robed Figure
+00006B83  Giant Teddy Bear
+00006B94  GOBLIN
+00006B9B  GARGOYL
+00006BA3  MINOTAU
+00006BAF  GIANT
+00006BB5  DRAGON
+00006BBC  TROLL
+00006BC2  ROBED
+00006BC8  1.PIC
+00006BDE  FUNKY.CMFU
+00007823  BUZZER.VOCU
+00007866  SHOP1.PIC
+00007870  Gold: 
+00007C89  <1u/
+00007CBC  <2u.
+00007CEE  <3u.
+00007D20  <4u/
+00007D53  <5u/
+00007D86  <6u-
+00007DB6  v<7u1
+00007DEB  A<8u1
+00007E34  SHOP2.PIC
+00007E3E  Gold: 
+00008257  <1u6
+00008291  <2u6
+000082CB  <3u6
+00008305  <4u5
+0000833D  }<5u4
+00008375  E<6u5
+000083C2  MUSICBOX.CMF
+00008426  HELP.PIC
+00008468  GF4TITLE.PIC
+00008475  INTRO.CMF
+0000847F  CREDITS1.PIC
+0000848C  JUPITER.CMF
+000084A0  CREDITS1.VOC
+000084AD  BIGSFX.VOC
+000084B8  CREDITS2.PIC
+000084C5  CREDITS2.VOC
+000084D2  CREDITS3.PIC
+000084DF  CREDITS3.VOC
+000084EC  CREDITS4.PIC
+000084F9  CREDITS4.VOCU
+0000871F  Map Symbols Help
+00008730  These are mountains.
+00008745  You cannot pass through them.
+00008763  Press any key
+00008778  $This is a beach, or a clump of sand.
+0000879E  You may pass through these.'This is a clearing, only grass is here.
+000087E2  This is a forest.
+000087F4  These are different depths
+0000880F  of water.
+00008819  You may not pass through these.'These are shops where you can buy stuff(like weapons, armour, potions, and magic#spells (magic users only, please!).(This is the final guy you have to fight.(Only approach this symbol when you think&you are buff enough to kill a guy with%lots of health, and a V E R Y skilled
+0000894D  fighter.U
+00008FE8  ZEPPELIN.CMF
+0000900D  BUZZER.VOC
+00009018  AH.VOC
+00009027  GLASS.VOC
+00009031  You found some gold coins!
+0000904C                            
+00009067  SFX2.VOCU
+0000936D  <*u!
+00009392  </u!
+000093B7  <+u$
+000093DF  <-u$
+00009963  IT.CMF
+0000996A  INTRO1.PIC
+00009975  INTRO2.PIC
+00009990  INTRO3.PIC
+0000999B  INTRO4.PIC
+000099A6  INTRO5.PIC
+000099B1  INTRO6.PIC
+000099BC  SFX7.VOC
+000099C5  INTRO7.PIC
+000099D0  INTRO8.PIC
+000099DB  INTRO9.PIC
+000099E6  INTRO10.PIC
+000099F2  SFX6.VOC
+000099FB  INTRO11.PIC
+00009A07  INTRO12.PIC
+00009A13  INTRO13.PIC
+00009A1F  INTRO14.PIC
+00009A2B  SFX2.VOC
+00009A34  INTRO15.PIC
+00009A40  SFX9.VOC
+00009A49  SFX3.VOC
+00009A52  INTRO16.PIC
+00009A5E  INTRO17.PIC
+00009A6A  SFX4.VOC
+00009A73  INTRO18.PIC
+00009A7F  INTRO19.PIC
+00009A8B  Press any key to continue
+00009AAD  MENU.PIC
+00009AB6  FUNKY.CMFU
+00009E7F  MENU.PICU
+00009EB8   Initializing Map, Please wait...
+0000B7A4  FIGHTER.VOCU
+0000B7E4  MAGIC.VOCU
+0000B822  THIEF.VOCU
+0000B922  CHOOSE.PIC
+0000B92D  FAIRY
+0000B943  MENU.PICU
+0000CA9E  *Thank you for playing The Golden Flute IV.
+0000CACA  SEEYA.VOCU
+0000CBB7  SPEED.DAT
+0000CBD1  The Golden Flute IV
+0000CBE5  The Flute of Immoratility
+0000CBFF  A Rick Brewster Production
+0000CC1A  Made in 1993 and 1994
+0000CC30  Graphics Capabilities
+0000CC47   CGA     
+0000CC51    Hercules
+0000CC5C    CGA     
+0000CC68   Hercules
+0000CC72  Sound Capabilities"
+0000CC86   Sound Blaster or 100% compatible"  PC Internal Speaker             "  Sound Blaster or 100% compatible"
+0000CCEF   PC Internal Speaker             
+0000CD11  Mouse
+0000CD18   Off
+0000CD1D    On 
+0000CD23    Off
+0000CD2A   On 
+0000CD2F  Please wait ... Initializing
+0000CD4C  GF4.TAB
+0000CD54  SAVEGAME.DAT
+0000CD61  Empty
+0000CD67                              
+0000CD93  #Press a key or mouse button to play
+0000CDB8  DIE.VOC
+0000CDC0  CLR-TEXT.EXE
+0000CDCD  SIMCGA.COM
+0000CDE8  JUPITER.CMF
+0000CDF4  TITLE1.PIC
+0000CDFF  TITLE.VOC
+0000CE09  GLASS.VOC
+0000CE13  TITLE2.PIC
+0000CE1E  INTRO.CMF
+0000CE28  GF4TITLE.PIC
+0000CE35  MENU.PIC
+0000CE3E  FUNKY.CMF
+0000D9C8  J<2u
+0000D9E0  2<3u
+0000DE2D  FADEORDR.DATU
+0000DFDC  FADEORDR.DATU
+0000E11B  FADEORDR.DATU
+0000E2D3  unknown
+0000E2DB  Everything is okay
+0000E2EE  File not found
+0000E2FD  Path not found
+0000E30C  File access denied
+0000E31F  Invalid file handle
+0000E333  Invalid file access code
+0000E34C  Invalid drive number Cannot remover current directory
+0000E382  Cannot rename across drives
+0000E39E  Disk write error
+0000E3AF  File not assigned
+0000E3C1  File not open
+0000E3CF  File not open for input
+0000E3E7  File not open for output
+0000E400  Invalid numeric format
+0000E417  Disk is write-protected
+0000E42F  Unknown unit
+0000E43C  Drive not ready
+0000E44C  Unknown command
+0000E45C  CRC error in data"Bad drive request structure length
+0000E491  Disk seek error
+0000E4A1  Unknown media type
+0000E4B4  Sector not found
+0000E4C5  Printer out of paper
+0000E4DA  Device write fault
+0000E4ED  Device read fault
+0000E4FF  Hardware failure
+0000E930  3BGI Error: Graphics not initialized (use InitGraph) BGI Error:  Not in graphics modeU
+0000EF38  .BGIU
+0000F7C0  .CHRU
+0001044A  PSQR
+0001047B  ZY[X
+0001063E  PSQRW
+00010646  _ZY[X
+00010926  @IKB
+00010A58  WWVSSPP
+00010D1C  ^X@;F
+0001106F   !H#l%
+00011096  GjI<K
+00011796  .BOLD.CHR
+000117A0  TRIP.CHR
+000117A9  SANS.CHR
+000117B2  LITT.CHR
+000117BB  SIMP.CHR
+000117C4  TSCR.CHR
+000117CD  SCRI.CHR
+000117D6  EURO.CHR
+000117DF  LCOM.CHR
+000117E8  GOTH.CHR
+00011BCB  (Sorry, Table Does Not Exist !!          U
+0001245D  @2OOC
+000124BF  d5"d
+0001250E  D2"D3
+00012524  D5:D
+00012579  & %&
+00012597  & %&
+0001276A  |z;\
+00012774  |p;T
+00012790  ;d2tQZ
+00012797  D8_Y[;T
+000127CA  |>;T
+00012818  %K;\
+00012821  ;\8}D*
+0001297F  D2)F
+000129E3  D:"D
+00012A1C  D8 D6
+00012B10  D2;D4}
+00012B2D  D2;D4t
+00012C09  \29\2|
+00012C38  |2-v
+00012C5E  l4-s
+00012C6D  D4=-
+00012CB6  TBOx
+00012CCB  9\Du
+00012CD0  9TFu
+00012D07  T8x3
+00012D1A  D>+D>
+00012D33  DHft
+00012F63  |1;\
+00012F6D  |';T
+0001305F  +\<}
+00013068  +T>}
+000130ED  L8xi
+000130F5  D6+D4s
+00013365  d h1l9p9t/x
+0001366F  .CMF
+00013674  PLAY-CMF.COM
+00013684  DOS Erorr #U
+00013781  STOP-CMF.COM
+0001378F  DOS Erorr #U
+00013806  .VOC
+0001380B  SAY-SB.COM
+00013816  DOS Erorr #U
+000139DD  *u*&
+00013CF8  tDI<
+00013D0D  tO< r
+00013EDD  tcQRW
+00013F51  SPEED.DAT)SPEED.DAT not found, running SETSPEED.EXE
+00013F85  SETSPEED.EXE
+00013F93  GF4.CFG
+00013F9B  SETUP.EXE
+00014369  0<:r
+00014377  Runtime error 
+00014386   at 
+000143AF  X[YZ^_]
+0001493C  BFGQVW
+00014944  _^Yt
+00014B3C  vmUPWVQ
+00014BB6  v7UQ
+00014C0F  X[ZY]
+00014E91  =$tD&
+000156DB  !RP3
+000156E9  ![YRP
+00015741  Sunday
+0001574B  Monday
+00015755  Tuesday
+0001575F  Wednesday
+00015769  Thursday
+00015773  Friday
+0001577D  Saturday
+00015790  EGAVGA
+000157A2  HERC
+000157B4  PC3270
+000158B7  TRIP
+000158C6  LITT
+000158D5  SANS
+000158E4  GOTH
+0001594B  89:;<=>?

@@ -1,0 +1,19 @@
+# name  start  end  size  perms  type
+CODE_0            1000:0000  1000:b23f  45632  RWX  Default
+CODE_1            1b24:0000  1b24:036f  880  RWX  Default
+CODE_2            1b5b:0000  1b5b:043f  1088  RWX  Default
+CODE_3            1b9f:0000  1b9f:05cf  1488  RWX  Default
+CODE_4            1bfc:0000  1bfc:017f  384  RWX  Default
+CODE_5            1c14:0000  1c14:2fff  12288  RWX  Default
+CODE_6            1f14:0000  1f14:03cf  976  RWX  Default
+CODE_7            1f51:0000  1f51:01df  480  RWX  Default
+CODE_8            1f6f:0000  1f6f:03bf  960  RWX  Default
+CODE_9            1fab:0000  1fab:139f  5024  RWX  Default
+CODE_10           20e5:0000  20e5:02af  688  RWX  Default
+CODE_11           2110:0000  2110:065f  1632  RWX  Default
+CODE_12           2176:0000  2176:017f  384  RWX  Default
+CODE_13           218e:0000  218e:00ff  256  RWX  Default
+CODE_14           219e:0000  219e:156f  5488  RWX  Default
+CODE_15           22f5:0000  22f5:025f  608  RWX  Default
+DATA              22f5:0260  4000:224f  127136  RW-  Default
+HEADER            HEADER::00000000  HEADER::000027ef  10224  ---  Default
