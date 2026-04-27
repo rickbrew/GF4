@@ -4,8 +4,8 @@ using System.IO;
 namespace GoldenFluteIV.Engine;
 
 /// <summary>
-/// Loads FADEORDR.DAT — two disjoint tables of 8 192 CGA byte addresses each
-/// (16 384 bytes total, as little-endian uint16 values).
+/// Loads FADEORDR.DAT — two disjoint tables of 8 192 CGA byte addresses each.
+/// File is 32 768 bytes total (8 192 entries × 2 tables × 2 bytes per little-endian uint16).
 /// Together the two tables form a complete, non-overlapping partition of all
 /// 16 384 CGA framebuffer byte offsets (0x0000–0x3FFF).
 ///

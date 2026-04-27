@@ -39,7 +39,8 @@ public sealed class GameCanvas : Control
 
     // ── Display bitmap ────────────────────────────────────────────────────────
     // WriteableBitmap is the stable Avalonia public API for pixel-level writes.
-    // We pin the CgaRenderer pixel buffer and MemoryCopy into it each frame.
+    // Each frame we MemoryMarshal.AsBytes the CgaRenderer pixel span and copy it
+    // into this bitmap; no pinning, no extra allocation.
     private readonly WriteableBitmap _display;
 
     public GameCanvas()
@@ -162,6 +163,10 @@ public sealed class GameCanvas : Control
     protected override void OnPointerMoved(PointerEventArgs e)
     {
         base.OnPointerMoved(e);
+        // Guard against pointer events arriving before the first layout pass —
+        // Bounds is (0, 0) at that point and division would produce NaN/Infinity.
+        if (Bounds.Width <= 0 || Bounds.Height <= 0) return;
+
         var pos = e.GetPosition(this);
         // Map from display pixels back to CGA logical coordinates
         _input.MouseX = pos.X * CgaRenderer.Width  / Bounds.Width;

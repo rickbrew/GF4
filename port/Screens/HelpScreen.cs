@@ -38,7 +38,9 @@ public sealed class HelpScreen : IGameScreen
     {
         if (!_entered) { _entered = true; return null; }
 
-        if (input.LastKey.HasValue || input.Confirm || input.Cancel || input.MouseLeft)
+        // Confirm (Enter/Space) and Cancel (Esc) both also set LastKey, so
+        // LastKey.HasValue || MouseLeft covers every advance trigger.
+        if (input.LastKey.HasValue || input.MouseLeft)
         {
             _page++;
             if (_page >= PageCount || input.Cancel)
@@ -75,12 +77,11 @@ public sealed class HelpScreen : IGameScreen
         T(canvas, "  S           — show Stats screen", 3, 8, 72);
         T(canvas, "  H           — drink Healing Potion (+HP, max 24)", 3, 8, 84);
         T(canvas, "  M           — drink Magic Potion  (+MP, Mage only)", 3, 8, 96);
-        T(canvas, "  F10         — show this Help screen", 3, 8, 108);
-        T(canvas, "  Q           — Quit to main menu", 3, 8, 120);
-        T(canvas, "Cheats (original game):", 2, 8, 136);
-        T(canvas, "  * or /      — set HP to typed value", 2, 8, 148);
-        T(canvas, "  +           — set Gold to typed value", 2, 8, 160);
-        T(canvas, "  -           — set MP to typed value", 2, 8, 172);
+        T(canvas, "  F5          — Save game (3 slots)", 3, 8, 108);
+        T(canvas, "  F10         — show this Help screen", 3, 8, 120);
+        T(canvas, "  Q           — Quit to main menu (use 2/L there to Load)", 3, 8, 132);
+        T(canvas, "Cheats (original game, not yet wired in this port):", 2, 8, 150);
+        T(canvas, "  * or /  HP    +  Gold    -  MP", 2, 8, 162);
     }
 
     private static void DrawPage1(SKCanvas canvas)
@@ -110,13 +111,12 @@ public sealed class HelpScreen : IGameScreen
         T(canvas, "  HP:6  Atk:6  Def:2  Gold:75  Has Knife", 3, 16, 106);
         T(canvas, "Healing Potion  →  H key  (all classes get one to start)", 3, 8, 126);
         T(canvas, "Magic Potion    →  M key  (Mage only)", 3, 8, 138);
-        T(canvas, "Save format: 30 KB map + 40-byte stat block per slot.", 2, 8, 158);
-        T(canvas, "(Save/load not yet implemented in this port.)", 2, 8, 170);
+        T(canvas, "Save: F5 in world (3 slots). Load: 2 / L on main menu.", 2, 8, 158);
+        T(canvas, "Each slot is 30 KB map + 46-byte stat block (30,046 B).",  2, 8, 170);
     }
 
     private static void DrawFooter(SKCanvas canvas)
     {
-        for (float x = 0; x < 320; x++) { /* blank — already black background */ }
         T(canvas, "[Any key = next page    Esc = close]", 1, 30, 198);
     }
 

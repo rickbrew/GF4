@@ -20,20 +20,24 @@ public sealed class GameData
     {
         AssetDir = assetDir ?? LocateAssetDir();
 
-        Tiles    = new TileSet(Pic("GF4.TAB"));
-        Monsters = MonsterData.Load(Pic("MONSTERS.DAT"));
-        Fade     = new FadeTable(Pic("FADEORDR.DAT"));
+        Tiles    = new TileSet(Asset("GF4.TAB"));
+        Monsters = MonsterData.Load(Asset("MONSTERS.DAT"));
+        Fade     = new FadeTable(Asset("FADEORDR.DAT"));
     }
 
-    /// <summary>Return full path for a file in the asset directory.</summary>
-    public string Pic(string filename) =>
+    /// <summary>
+    /// Return the full path of <paramref name="filename"/> inside the asset directory.
+    /// Filename is uppercased to match the original DOS-era 8.3 naming convention,
+    /// which keeps things working on case-sensitive filesystems too.
+    /// </summary>
+    public string Asset(string filename) =>
         Path.Combine(AssetDir, filename.ToUpperInvariant());
 
     /// <summary>
     /// Decode and return a .PIC file as a flat palette-index array (320×200).
     /// </summary>
     public byte[] LoadPic(string filename) =>
-        PicLoader.Load(Pic(filename));
+        PicLoader.Load(Asset(filename));
 
     // ── private ───────────────────────────────────────────────────────────────
 

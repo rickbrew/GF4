@@ -175,10 +175,13 @@ public sealed class PlayerState
             Inv11          = b[i++] != 0,
             HealingPotions = ReadWord(b, ref i),
             MagicPotions   = ReadWord(b, ref i),
-            Class          = b[i++],
-            X              = ReadWord(b, ref i),
-            Y              = ReadWord(b, ref i),
-            Facing         = b[i],   // last field — no increment needed
+            // Class / Facing / X / Y are clamped because PlayerTile() and the world
+            // renderer index arrays by these values; a corrupt or partially-written
+            // save file with garbage here would otherwise crash via OOB tile lookup.
+            Class          = Math.Clamp((int)b[i++], 1, 3),
+            X              = Math.Clamp(ReadWord(b, ref i), 1, WorldMap.Width),
+            Y              = Math.Clamp(ReadWord(b, ref i), 1, WorldMap.Height),
+            Facing         = Math.Clamp((int)b[i], 1, 4),   // last field — no increment needed
         };
     }
 

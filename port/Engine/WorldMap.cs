@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 
 namespace GoldenFluteIV.Engine;
 
@@ -191,6 +192,11 @@ public sealed class WorldMap
                     placed++;
                 }
             }
+            // The encounter table totals ~736 across ~5,800 free interior cells, so
+            // running out of attempts means the map is unusably full. The boss
+            // (count=1) failing to place would mean an unwinnable game.
+            Debug.Assert(placed == count,
+                $"WorldMap.PlaceAllEncounters: only placed {placed}/{count} of code {code}");
         }
     }
 }

@@ -65,8 +65,8 @@ public sealed class WorldScreen : IGameScreen
 
         if (_gameOver)
         {
-            // Game over — any key returns to main menu
-            if (input.LastKey.HasValue || input.Confirm || input.MouseLeft)
+            // Game over — any key returns to main menu (Confirm also sets LastKey).
+            if (input.LastKey.HasValue || input.MouseLeft)
                 return new MainMenuScreen(_data);
             return null;
         }

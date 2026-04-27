@@ -39,7 +39,8 @@ public sealed class StatsScreen : IGameScreen
         // Eat the first frame so the 'S' key press that opened us doesn't also close us.
         if (!_entered) { _entered = true; return null; }
 
-        if (input.LastKey.HasValue || input.Confirm || input.Cancel || input.MouseLeft)
+        // Any key or click closes. Confirm/Cancel also set LastKey, so LastKey.HasValue covers them.
+        if (input.LastKey.HasValue || input.MouseLeft)
             return _returnTo;
 
         return null;

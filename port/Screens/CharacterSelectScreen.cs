@@ -30,8 +30,9 @@ public sealed class CharacterSelectScreen : IGameScreen
     // The originals are at (x1=60,y1=??  x2=140,y2=??) in a BGI/mouse coord system;
     // we divide the screen into thirds as the best available approximation until we
     // can run the DOS binary side-by-side and measure precisely.
-    private static bool InFighterZone(double x, double y) => x is >= 50 and <= 250 && y is >= 10 and <= 75;
-    private static bool InMageZone   (double x, double y) => x is >= 50 and <= 250 && y is >= 75 and <= 135;
+    // Half-open ranges so adjacent zones don't both match the boundary y values.
+    private static bool InFighterZone(double x, double y) => x is >= 50 and <= 250 && y is >= 10  and <  75;
+    private static bool InMageZone   (double x, double y) => x is >= 50 and <= 250 && y is >= 75  and <  135;
     private static bool InThiefZone  (double x, double y) => x is >= 50 and <= 250 && y is >= 135 and <= 195;
 
     public CharacterSelectScreen(GameData data)

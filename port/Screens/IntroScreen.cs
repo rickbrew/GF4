@@ -43,7 +43,8 @@ public sealed class IntroScreen : IGameScreen
         _elapsed += dt;
 
         bool abort   = input.Cancel;
-        bool advance = input.Confirm || input.LastKey.HasValue || input.MouseLeft;
+        // Confirm (Enter/Space) also sets LastKey, so LastKey.HasValue covers it.
+        bool advance = input.LastKey.HasValue || input.MouseLeft;
 
         if (abort)
             return _returnTo;

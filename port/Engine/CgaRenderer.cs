@@ -56,7 +56,11 @@ public sealed class CgaRenderer : IDisposable
     public void Clear(int colorIndex = 0) =>
         WritablePixels.Fill(PaletteArgb[colorIndex & 3]);
 
-    /// <summary>Set a single pixel. No bounds checking.</summary>
+    /// <summary>
+    /// Set a single pixel. The underlying span is bounds-checked so an out-of-range
+    /// (x, y) will either wrap into a different row (when 0 ≤ y*Width+x &lt; total)
+    /// or throw IndexOutOfRangeException. Callers are expected to clip beforehand.
+    /// </summary>
     public void SetPixel(int x, int y, int colorIndex) =>
         WritablePixels[y * Width + x] = PaletteArgb[colorIndex & 3];
 

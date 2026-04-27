@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Security;
 
 namespace GoldenFluteIV.Engine;
 
@@ -31,19 +32,41 @@ public static class SaveManager
     /// <summary>
     /// Save the current game state to a slot (1–3).
     /// Returns false if the write fails (e.g. disk full or permission denied).
+    ///
+    /// Writes are atomic: data is staged into SAVE{n}.DAT.tmp first, then renamed
+    /// over the real slot file, so an interrupted save never leaves a torn slot
+    /// half-written on disk.
     /// </summary>
     public static bool Save(int slot, PlayerState player, WorldMap map)
     {
         if (slot is < 1 or > SlotCount) return false;
+
+        string finalPath = SlotPath(slot);
+        string tmpPath   = finalPath + ".tmp";
+
         try
         {
             var buf = new byte[TotalBytes];
             map.ToSaveBytes().CopyTo(buf, 0);
             player.ToSaveBytes().CopyTo(buf, MapBytes);
-            File.WriteAllBytes(SlotPath(slot), buf);
+
+            File.WriteAllBytes(tmpPath, buf);
+            File.Move(tmpPath, finalPath, overwrite: true);
             return true;
         }
-        catch { return false; }
+        catch (Exception ex) when (ex is IOException
+                                      or UnauthorizedAccessException
+                                      or SecurityException
+                                      or NotSupportedException)
+        {
+            // Clean up the temp file if the rename failed — leaving it would
+            // confuse the next save attempt and waste disk.
+            try { if (File.Exists(tmpPath)) File.Delete(tmpPath); }
+            catch (Exception cleanup) when (cleanup is IOException
+                                              or UnauthorizedAccessException
+                                              or SecurityException) { /* swallow */ }
+            return false;
+        }
     }
 
     /// <summary>
@@ -59,7 +82,9 @@ public static class SaveManager
 
         byte[] buf;
         try   { buf = File.ReadAllBytes(path); }
-        catch { return null; }
+        catch (Exception ex) when (ex is IOException
+                                      or UnauthorizedAccessException
+                                      or SecurityException) { return null; }
 
         if (buf.Length < TotalBytes) return null;
 
@@ -69,7 +94,9 @@ public static class SaveManager
             var player = PlayerState.FromSaveBytes(buf.AsSpan(MapBytes, PlayerBytes));
             return (player, map);
         }
-        catch { return null; }
+        catch (Exception ex) when (ex is ArgumentException
+                                      or InvalidDataException
+                                      or IndexOutOfRangeException) { return null; }
     }
 
     /// <summary>
@@ -95,6 +122,9 @@ public static class SaveManager
 
             return PlayerState.FromSaveBytes(buf);
         }
-        catch { return null; }
+        catch (Exception ex) when (ex is IOException
+                                      or UnauthorizedAccessException
+                                      or SecurityException
+                                      or ArgumentException) { return null; }
     }
 }
