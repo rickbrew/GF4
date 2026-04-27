@@ -46,7 +46,7 @@ public sealed class GameCanvas : Control
     {
         _renderer = new CgaRenderer();
         _data     = new GameData();
-        _screen   = new TitleScreen(_data);
+        _screen   = new MainMenuScreen(_data);
 
         _display  = new WriteableBitmap(
             new PixelSize(CgaRenderer.Width, CgaRenderer.Height),
@@ -143,14 +143,18 @@ public sealed class GameCanvas : Control
     {
         base.OnKeyDown(e);
         _input.LastKey = e.Key;
+        // NOTE: Only arrow keys are mapped to movement booleans so that letter keys
+        // (S=stats, H=heal, M=magic, Q=quit) can be read from input.LastKey by the
+        // active screen without conflict.  This is faithful to the original game which
+        // used arrow keys exclusively for world movement.
         switch (e.Key)
         {
-            case Key.Up    or Key.W: _input.Up      = true; break;
-            case Key.Down  or Key.S: _input.Down    = true; break;
-            case Key.Left  or Key.A: _input.Left    = true; break;
-            case Key.Right or Key.D: _input.Right   = true; break;
+            case Key.Up:                  _input.Up      = true; break;
+            case Key.Down:                _input.Down    = true; break;
+            case Key.Left:                _input.Left    = true; break;
+            case Key.Right:               _input.Right   = true; break;
             case Key.Return or Key.Space: _input.Confirm = true; break;
-            case Key.Escape:         _input.Cancel  = true; break;
+            case Key.Escape:              _input.Cancel  = true; break;
         }
         e.Handled = true;
     }

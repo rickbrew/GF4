@@ -36,10 +36,7 @@ public sealed class TitleScreen : IGameScreen
             return null;
 
         if (input.Confirm || input.LastKey.HasValue || input.MouseLeft)
-        {
-            // TODO: transition to main menu / character select screen
-            // return new MenuScreen(_data);
-        }
+            return new MainMenuScreen(_data);
 
         return null;
     }
