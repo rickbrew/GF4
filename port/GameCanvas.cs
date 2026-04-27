@@ -115,16 +115,16 @@ public sealed class GameCanvas : Control
     public override void Render(DrawingContext context)
     {
         // Copy the CGA pixel buffer (BGRA8888) into the WriteableBitmap.
-        // CgaRenderer keeps its uint[] pinned so we can grab the raw pointer.
+        // The source is a ReadOnlySpan<uint> over the pinned pixel array.
+        // The destination is Avalonia's locked bitmap address (IntPtr), so
+        // we still need one unsafe cast for the destination Span — unavoidable.
         using (var fb = _display.Lock())
         {
+            var src = MemoryMarshal.AsBytes(_renderer.Pixels);
             unsafe
             {
-                Buffer.MemoryCopy(
-                    source:              _renderer.PinnedPtr.ToPointer(),
-                    destination:         fb.Address.ToPointer(),
-                    destinationSizeInBytes: (long)fb.RowBytes * CgaRenderer.Height,
-                    sourceBytesToCopy:   (long)CgaRenderer.Width * CgaRenderer.Height * 4);
+                var dst = new Span<byte>(fb.Address.ToPointer(), src.Length);
+                src.CopyTo(dst);
             }
         }
 

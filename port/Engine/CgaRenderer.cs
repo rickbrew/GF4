@@ -33,36 +33,32 @@ public sealed class CgaRenderer : IDisposable
         new(255, 255, 255),
     ];
 
-    private readonly uint[]   _pixels;
-    private readonly GCHandle _handle;
-    public  readonly SKBitmap Bitmap;
+    public readonly SKBitmap Bitmap;
 
     public CgaRenderer()
     {
-        _pixels = new uint[Width * Height];
-        _handle = GCHandle.Alloc(_pixels, GCHandleType.Pinned);
-
         var info = new SKImageInfo(Width, Height, SKColorType.Bgra8888, SKAlphaType.Opaque);
-        Bitmap = new SKBitmap();
-        Bitmap.InstallPixels(info, _handle.AddrOfPinnedObject(), info.RowBytes);
+        Bitmap = new SKBitmap(info);
     }
 
     /// <summary>
-    /// Raw pointer to the pinned pixel buffer (BGRA8888, 320×200 × 4 bytes).
+    /// Read-only view of the pixel buffer (BGRA8888, 320×200 uints, row-major).
     /// Used by GameCanvas to blit into a WriteableBitmap without extra allocation.
     /// </summary>
-    public IntPtr PinnedPtr => _handle.AddrOfPinnedObject();
+    public ReadOnlySpan<uint> Pixels =>
+        MemoryMarshal.Cast<byte, uint>(Bitmap.GetPixelSpan());
+
+    // Writable view used internally by the drawing methods.
+    private Span<uint> WritablePixels =>
+        MemoryMarshal.Cast<byte, uint>(Bitmap.GetPixelSpan());
 
     /// <summary>Fill the entire framebuffer with palette index <paramref name="colorIndex"/>.</summary>
-    public void Clear(int colorIndex = 0)
-    {
-        uint c = PaletteArgb[colorIndex & 3];
-        _pixels.AsSpan().Fill(c);
-    }
+    public void Clear(int colorIndex = 0) =>
+        WritablePixels.Fill(PaletteArgb[colorIndex & 3]);
 
     /// <summary>Set a single pixel. No bounds checking.</summary>
     public void SetPixel(int x, int y, int colorIndex) =>
-        _pixels[y * Width + x] = PaletteArgb[colorIndex & 3];
+        WritablePixels[y * Width + x] = PaletteArgb[colorIndex & 3];
 
     /// <summary>
     /// Blit a decoded screen image onto the framebuffer.
@@ -70,8 +66,9 @@ public sealed class CgaRenderer : IDisposable
     /// </summary>
     public void BlitIndexed(byte[] indices)
     {
+        var px = WritablePixels;
         for (int i = 0; i < indices.Length; i++)
-            _pixels[i] = PaletteArgb[indices[i] & 3];
+            px[i] = PaletteArgb[indices[i] & 3];
     }
 
     /// <summary>
@@ -80,6 +77,7 @@ public sealed class CgaRenderer : IDisposable
     /// </summary>
     public void BlitTile(byte[] tilePixels, int x, int y)
     {
+        var px = WritablePixels;
         const int TW = TileSet.TileWidth;
         const int TH = TileSet.TileHeight;
         for (int row = 0; row < TH; row++)
@@ -90,14 +88,10 @@ public sealed class CgaRenderer : IDisposable
             {
                 int dx = x + col;
                 if (dx < 0 || dx >= Width) continue;
-                _pixels[dy * Width + dx] = PaletteArgb[tilePixels[row * TW + col] & 3];
+                px[dy * Width + dx] = PaletteArgb[tilePixels[row * TW + col] & 3];
             }
         }
     }
 
-    public void Dispose()
-    {
-        Bitmap.Dispose();
-        if (_handle.IsAllocated) _handle.Free();
-    }
+    public void Dispose() => Bitmap.Dispose();
 }
