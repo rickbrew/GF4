@@ -83,6 +83,9 @@ public sealed class WorldScreen : IGameScreen
                 case Key.S:
                     return new StatsScreen(_player, this);
 
+                case Key.F5:
+                    return new SaveScreen(_player, _map, this);
+
                 case Key.F10:
                     return new HelpScreen(this);
 

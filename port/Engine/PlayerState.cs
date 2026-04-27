@@ -135,4 +135,57 @@ public sealed class PlayerState
         b[i++] = (byte)(v & 0xff);
         b[i++] = (byte)((v >> 8) & 0xff);
     }
+
+    /// <summary>
+    /// Deserialise the 46-byte block written by <see cref="ToSaveBytes"/>.
+    /// Accepts a <see cref="ReadOnlySpan{T}"/> so callers can pass a slice of a
+    /// larger buffer without an extra allocation.
+    /// </summary>
+    public static PlayerState FromSaveBytes(ReadOnlySpan<byte> b)
+    {
+        if (b.Length < 46)
+            throw new ArgumentException("Buffer too short for player state", nameof(b));
+
+        int i = 0;
+        return new PlayerState
+        {
+            HP             = ReadWord(b, ref i),
+            AttackLevel    = ReadWord(b, ref i),
+            AttackDie      = ReadWord(b, ref i),
+            DefendLevel    = ReadWord(b, ref i),
+            DefendDie      = ReadWord(b, ref i),
+            Stat6          = ReadWord(b, ref i),
+            Stat7          = ReadWord(b, ref i),
+            Gold           = ReadWord(b, ref i),
+            MP             = ReadWord(b, ref i),
+            MagicXP        = ReadWord(b, ref i),
+            Stat10         = ReadWord(b, ref i),
+            Stat11         = ReadWord(b, ref i),
+            Inv0           = b[i++] != 0,
+            Inv1           = b[i++] != 0,
+            Inv2           = b[i++] != 0,
+            Inv3           = b[i++] != 0,
+            Inv4           = b[i++] != 0,
+            Inv5           = b[i++] != 0,
+            Inv6           = b[i++] != 0,
+            Inv7           = b[i++] != 0,
+            Inv8           = b[i++] != 0,
+            Inv9           = b[i++] != 0,
+            Inv10          = b[i++] != 0,
+            Inv11          = b[i++] != 0,
+            HealingPotions = ReadWord(b, ref i),
+            MagicPotions   = ReadWord(b, ref i),
+            Class          = b[i++],
+            X              = ReadWord(b, ref i),
+            Y              = ReadWord(b, ref i),
+            Facing         = b[i],   // last field — no increment needed
+        };
+    }
+
+    private static int ReadWord(ReadOnlySpan<byte> b, ref int i)
+    {
+        int v = b[i] | (b[i + 1] << 8);
+        i += 2;
+        return v;
+    }
 }

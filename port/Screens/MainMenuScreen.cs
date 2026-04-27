@@ -47,7 +47,7 @@ public sealed class MainMenuScreen : IGameScreen
         return k switch
         {
             Key.D1 or Key.I                       => new IntroScreen(_data, this),
-            Key.D2 or Key.L                       => null,   // TODO: load-game screen
+            Key.D2 or Key.L                       => new LoadScreen(_data, this),
             Key.D3 or Key.N                       => new CharacterSelectScreen(_data),
             Key.D4 or Key.Q or Key.Escape         => ExitApp(),
             _                                     => null
@@ -88,7 +88,7 @@ public sealed class MainMenuScreen : IGameScreen
             SKTypeface.FromFamilyName("Courier New", SKFontStyle.Normal) ?? SKTypeface.Default,
             11f);
         using var paint  = new SKPaint { IsAntialias = false, Color = CgaRenderer.Palette[3] };
-        canvas.DrawText("1-Intro   2-Load   3-New Game   4-Quit", 12f, TextY, font, paint);
+        canvas.DrawText("1-Intro  2-Load  3-New Game  4-Quit", 14f, TextY, font, paint);
     }
 
     private static IGameScreen? ExitApp()
